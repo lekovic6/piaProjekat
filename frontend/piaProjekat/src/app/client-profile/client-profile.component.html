@@ -1,0 +1,37 @@
+<div class="profile-container">
+    <div class="image-container">
+        <img [src]="'data:' + profilePicture?.contentType + ';base64, ' + profilePicture?.data" alt="slika" height="100" width="100">
+        <label for="profilePicture">Profile Picture:</label>
+
+        
+    </div>
+    Choose new picure:<input type="file" id="profilePicture" accept=".jpg, .png" (change)="onFileChange($event)">
+    <div>
+        {{dimensionErrorMassage}}
+    </div>
+    <div class="user-details">
+        <input type="text" value="{{username}}" disabled/>
+        <input type="text" value="{{email}}" disabled/>
+    </div>
+    <div class="edit-details">
+        <div>
+            <label for="firstname">First name</label>
+            <input id="firstname" type="text" [(ngModel)]="firstname"/>
+        </div>
+        <div>
+            <label for="lastname">Last name</label>
+            <input id="lastname" type="text" [(ngModel)]="lastname"/>
+        </div>
+        <div>
+            <label for="phone">Phone number</label>
+            <input id="phone" type="text" [(ngModel)]="phoneNumber"/>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input id="password" type="password" [(ngModel)]="password"/>
+        </div>
+        <div>
+            <button (click)="updateDetails()">Update Details</button>
+        </div>
+    </div>
+</div>

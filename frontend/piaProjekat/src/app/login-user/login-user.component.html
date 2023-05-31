@@ -1,27 +1,15 @@
 <p>login-user works!</p>
 <div>
-    username: <input type="text" name="username" [(ngModel)]="username">
-    <br>
+    <form (submit)="loginUser()">
+        <input type="text" name="username" [(ngModel)]="username" placeholder="Username" required>
+        <input type="password" name="password" [(ngModel)]="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
 
-    password: <input type="password" name="password" [(ngModel)]="password">
-    <br>
     
-    <button (click)="loginUser()">Login</button>
-    <br>
-
     <p> 
-        <!-- 
-        <a routerLink="registration"> no account? Register! just adding route  </a>
-        <br>
-        nije dobro jer samo nadodaje na userLogin path i registration pa dobijem .../userLogin/registration sto mi ne postoji kao path
-        -->
         <a [routerLink]="['/registration']"> Register direct route </a>
     </p>
 
-    <div>
-
-        <img [src]="base64Image" alt="Image">
-
-    </div>
 </div>
 

@@ -1,4 +1,30 @@
-<p>home works!</p>
-<p>
-    <a routerLink="loginUser">login!</a>
-</p>
+<div>
+    <table>
+        Enter name or adress: <input type="text" [(ngModel)]="filterParam"><button (click)="filterByNameOrAdress()">Search...</button>
+        <br>
+        <select (change)="sort($event)">
+            <option value="">Sort...</option>
+            <option value="name-asc">Sort by Name Ascending</option>
+            <option value="name-desc">Sort by Name Descending</option>
+            <option value="adress-asc">Sort by Adress Ascending</option>
+            <option value="adress-desc">Sort by Adress Descending</option>
+        </select>
+        <br>
+        <tr>
+            <th>Slika agencije</th>
+            <th>Ime agencije</th>
+            <th>Opis agencije</th>
+        </tr>
+        <tr *ngFor="let agency of showingAgencies">
+            <td>
+                <img [src]="'data:' + agency.profilePicture.contentType + ';base64, ' + agency.profilePicture.data" alt="slika" height="100" width="100">
+            </td>
+            <td>
+                <a [routerLink]="['/agencyDetails', agency.username]">{{ agency.agencyName }}</a>
+                
+            </td>  
+            <td>{{agency.description}}</td>
+        </tr>
+    </table>
+</div>
+<hr>

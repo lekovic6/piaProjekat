@@ -68,7 +68,7 @@
 
         <div>
             <label>Phone Number:</label>
-            <input type="number" formControlName="phoneNumber">
+            <input type="text" formControlName="phoneNumber">
             <div *ngIf="registrationForm.get('phoneNumber').invalid && registrationForm.get('phoneNumber').touched">
                 Phone Number is required.
             </div>
@@ -95,7 +95,7 @@
 
         <div>
             <label>Tax ID Number:</label>
-            <input type="number" formControlName="tid">
+            <input type="text" formControlName="tid">
             <div *ngIf="registrationForm.get('tid').invalid && registrationForm.get('tid').touched">
                 Tax ID Number is required.
             </div>
@@ -112,7 +112,7 @@
     </div>
   
 
-    <button type="submit" [disabled]="registrationForm.invalid || dimensionErrorFlag" id="registerButton">Register</button>
+    <button type="submit" [disabled]="registrationForm.invalid || dimensionErrorFlag" (click)="register()" id="registerButton">Register</button>
 </form>
 
 <hr>

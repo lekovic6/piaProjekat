@@ -28,7 +28,6 @@
               "src/styles.css"
             ],
             "scripts": [
-              "assets/js/functions.js"
             ]
           },
           "configurations": {

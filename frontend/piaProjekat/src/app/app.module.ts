@@ -9,6 +9,11 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AgencyComponent } from './agency/agency.component';
+import { AgencyDetailsComponent } from './agency-details/agency-details.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { ClientProfileComponent } from './client-profile/client-profile.component';
 
 
 @NgModule({
@@ -17,7 +22,12 @@ import { HttpClientModule } from '@angular/common/http';
     LoginUserComponent,
     LoginAdminComponent,
     HomeComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    AgencyComponent,
+    AgencyDetailsComponent,
+    HeaderComponent,
+    FooterComponent,
+    ClientProfileComponent
   ],
   imports: [
     BrowserModule,
