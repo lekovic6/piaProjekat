@@ -4,6 +4,7 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import userRouter from './routers/user.routes';
 import guestRouter from './routers/guest.routes';
+import placeRouter from './routers/place.routes';
 
 const app = express();
 app.use(cors());
@@ -18,10 +19,8 @@ connection.once('open', ()=>{
 const router = express.Router();
 
 router.use('/guest', guestRouter);
-
-//router.use('/client', guestRouter); // za njega koristim userRouter
 router.use('/user', userRouter);
-
+router.use('/place', placeRouter);
 
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));

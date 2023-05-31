@@ -8,7 +8,7 @@
             <button class="dropbtn">Menu</button>
             <div class="dropdown-content">
                 <a *ngIf="userRole === 'client'" [routerLink]="['/clientProfile', username]">Profile</a>
-                <a *ngIf="userRole === 'client'" routerLink="/objects">Objects</a>
+                <a *ngIf="userRole === 'client'" [routerLink]="['/clientPlaces', username]">MyPlaces</a>
                 <a *ngIf="userRole === 'client'" routerLink="/jobs">Jobs</a>
             
                 <a *ngIf="userRole === 'agency'" routerLink="/profile">Profile</a>

@@ -14,6 +14,9 @@ import { AgencyDetailsComponent } from './agency-details/agency-details.componen
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClientProfileComponent } from './client-profile/client-profile.component';
+import { ClientPlacesComponent } from './client-places/client-places.component';
+import { PlaceDetailsComponent } from './place-details/place-details.component';
+import { AddPlaceComponent } from './add-place/add-place.component';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import { ClientProfileComponent } from './client-profile/client-profile.componen
     AgencyDetailsComponent,
     HeaderComponent,
     FooterComponent,
-    ClientProfileComponent
+    ClientProfileComponent,
+    ClientPlacesComponent,
+    PlaceDetailsComponent,
+    AddPlaceComponent
   ],
   imports: [
     BrowserModule,

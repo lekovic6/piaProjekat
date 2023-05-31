@@ -1,0 +1,31 @@
+.container {
+    margin-top: 20px;
+  }
+  
+  .place-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .place-card h5 {
+    margin-top: 0;
+  }
+  
+  .place-details {
+    margin-bottom: 10px;
+  }
+  
+  .place-details p {
+    margin-bottom: 5px;
+  }
+  
+  .place-actions {
+    text-align: right;
+  }
+  
+  .btn {
+    margin-top: 10px;
+  }
