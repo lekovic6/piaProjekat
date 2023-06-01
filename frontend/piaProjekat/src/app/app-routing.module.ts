@@ -8,6 +8,8 @@ import { AgencyComponent } from './agency/agency.component';
 import { AgencyDetailsComponent } from './agency-details/agency-details.component';
 import { ClientProfileComponent } from './client-profile/client-profile.component';
 import { ClientPlacesComponent } from './client-places/client-places.component';
+import { AddPlaceComponent } from './add-place/add-place.component';
+import { PlaceDetailsComponent } from './place-details/place-details.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path: 'registration', component:RegistrationComponent},
   {path: 'clientProfile/:username', component:ClientProfileComponent},// ne znam sta da radim za ovo jer ovaj client path je zapravo home path tkd mi client ne treba
   {path: 'clientPlaces/:clientUsername', component:ClientPlacesComponent},
+  {path: 'addPlace', component:AddPlaceComponent},
+  {path: 'placeDetails/:idPlace', component:PlaceDetailsComponent},
   
   {path: 'agency', component:AgencyComponent},// ovo cu da prebacim u pocentu agencije sto ce da budu jobs ja msm
   

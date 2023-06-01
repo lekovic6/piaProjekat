@@ -5,4 +5,5 @@ export class Place{
     address:string;
     numberOfRooms:number;
     area:number;
+    // dodati neki kurac za CANVAS
 }
