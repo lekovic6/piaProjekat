@@ -1,5 +1,5 @@
 <header>
-    <div class="logo">Logo</div>
+    <div class="logo"> <a [routerLink]="['/']"> Logo </a></div>
 
     <div class="user-menu" *ngIf="isLoggedIn | async">
         <div class="username">{{ username }}</div>
@@ -11,8 +11,8 @@
                 <a *ngIf="userRole === 'client'" [routerLink]="['/clientPlaces', username]">MyPlaces</a>
                 <a *ngIf="userRole === 'client'" routerLink="/jobs">Jobs</a>
             
-                <a *ngIf="userRole === 'agency'" routerLink="/profile">Profile</a>
-                <a *ngIf="userRole === 'agency'" routerLink="/workers">Workers</a>
+                <a *ngIf="userRole === 'agency'" [routerLink]="['/agencyProfile', username]">Profile</a>
+                <a *ngIf="userRole === 'agency'" [routerLink]="['/agencyWorkers']">Workers</a>
                 <a *ngIf="userRole === 'agency'" routerLink="/jobs">Jobs</a>
             </div>
         </div>

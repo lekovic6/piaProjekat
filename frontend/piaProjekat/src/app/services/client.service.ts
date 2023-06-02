@@ -17,12 +17,11 @@ export class ClientService {
     return this.http.post(this.uri + '/user/getClientByUsername', data);
   }
 
-  updateClient(username, firstname, lastname, password, phoneNumber, profilePictureData, profilePictureContentType){
+  updateClient(username, firstname, lastname, phoneNumber, profilePictureData, profilePictureContentType){
     const data = {
       username:username,
       firstname:firstname,
       lastname:lastname,
-      password:password,
       phoneNumber:phoneNumber,
       profilePictureData:profilePictureData,
       profilePictureContentType:profilePictureContentType

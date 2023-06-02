@@ -20,5 +20,17 @@ userRouter.route('/updateClient').post(
     (req, res) => new UserController().updateClient(req, res)
 )
 
+userRouter.route('/updateAgency').post(
+    (req, res) => new UserController().updateAgency(req, res)
+)
+
+userRouter.route('/changePassword').post(
+    (req, res) => new UserController().changePassword(req, res)
+)
+
+userRouter.route('/getAgencyWorkers').post(
+    (req, res) => new UserController().getAgencyWorkers(req, res)
+)
+
 
 export default userRouter;

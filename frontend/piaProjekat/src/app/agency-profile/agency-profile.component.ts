@@ -1,36 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfilePicture } from '../models/profilePicture';
+import { AgencyService } from '../services/agency.service';
 import { ActivatedRoute } from '@angular/router';
-import { ClientService } from '../services/client.service';
-import { User } from '../models/user';
+import { Agency } from '../models/agency';
+import { ProfilePicture } from '../models/profilePicture';
 import { Observable, ReplaySubject } from 'rxjs';
+import { Worker } from '../models/worker';
 
 @Component({
-  selector: 'app-client-profile',
-  templateUrl: './client-profile.component.html',
-  styleUrls: ['./client-profile.component.css']
+  selector: 'app-agency-profile',
+  templateUrl: './agency-profile.component.html',
+  styleUrls: ['./agency-profile.component.css']
 })
-export class ClientProfileComponent implements OnInit{
-
-  constructor(private route: ActivatedRoute, private clientService:ClientService) { }
-
+export class AgencyProfileComponent implements OnInit{
+  
+  constructor(private route: ActivatedRoute, private agencyService:AgencyService){ }
+  
   username:string;
-  firstname:string;
-  lastname:string;
+  password:string;
   email:string;
-  phoneNumber:string;
+  agencyName:string;
+  agencyAdress:string;
+  tid:string;
+  description:string;
   profilePicture:ProfilePicture;
+  //workers:Worker[];
+  maxNumberOfWorkers:number;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.username = params['username'];
       
-      this.clientService.getClientByUsername(this.username).subscribe((user:User) =>{
-        this.firstname = user.firstname;
-        this.lastname = user.lastname;
-        this.email = user.email;
-        this.phoneNumber = user.phoneNumber;
-        this.profilePicture = user.profilePicture;
+      this.agencyService.getAgencyByUsername(this.username).subscribe((agency:Agency) =>{
+        this.password = agency.password;
+        this.email = agency.email;
+        this.agencyName = agency.agencyName;
+        this.agencyAdress = agency.agencyAdress;
+        this.tid = agency.tid;
+        this.description =agency.description;
+        this.profilePicture = agency.profilePicture;
+
+        this.maxNumberOfWorkers = agency.maxNumberOfWorkers;
       });
     })
   }
@@ -88,7 +97,7 @@ export class ClientProfileComponent implements OnInit{
   }
 
   updateDetails(){
-    this.clientService.updateClient(this.username, this.firstname, this.lastname, this.phoneNumber, this.profilePicture.data, this.profilePicture.contentType).subscribe(res =>{
+    this.agencyService.updateAgency(this.username, this.agencyName, this.agencyAdress, this.tid, this.description, this.profilePicture.data, this.profilePicture.contentType).subscribe(res =>{
       if (res['message'] = 'update made')
         alert('Details updated!');
       else

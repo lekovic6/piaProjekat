@@ -1,5 +1,6 @@
 import * as express from 'express'
 import User from '../models/user';
+import Worker from '../models/worker';
 
 export class UserController {
 
@@ -36,7 +37,6 @@ export class UserController {
         let clientUsername = req.body.username;
         let firstname = req.body.firstname;
         let lastname = req.body.lastname;
-        let password = req.body.password;
         let phoneNumber = req.body.phoneNumber;
         let profilePictureData = req.body.profilePictureData;
         let profilePictureContentType = req.body.profilePictureContentType;
@@ -45,7 +45,6 @@ export class UserController {
                 $set: {
                     'firstname': firstname,
                     'lastname': lastname,
-                    'password': password,
                     'phoneNumber':phoneNumber,
                     'profilePicture.data': profilePictureData,
                     'profilePicture.contentType': profilePictureContentType
@@ -59,6 +58,64 @@ export class UserController {
                 }
               }
         );
+    }
+
+    updateAgency(req:express.Request, res:express.Response){
+        let username = req.body.username;
+        let agencyName = req.body.agencyName;
+        let agencyAdress = req.body.agencyAdress;
+        let tid = req.body.tid;
+        let description = req.body.description;
+        let profilePictureData = req.body.profilePictureData;
+        let profilePictureContentType = req.body.profilePictureContentType
+
+        User.collection.updateOne({ 'username': username },{
+            $set: {
+                'agencyName': agencyName,
+                'agencyAdress': agencyAdress,
+                'tid':tid,
+                'description':description,
+                'profilePicture.data': profilePictureData,
+                'profilePicture.contentType': profilePictureContentType
+            }
+        }, (err, result) => {
+            if (err) {
+              console.log(err);
+              res.status(500).json({ 'message': 'Error updating client.' });
+            } else {
+              res.status(200).json({ 'message': 'update made' });
+            }
+          }
+    );
+    }
+
+    changePassword(req:express.Request, res:express.Response){
+        let username = req.body.username;
+        let newPassword = req.body.newPassword;
+
+        User.collection.updateOne({ 'username': username },
+            {
+                $set: {
+                    'password': newPassword,
+                }
+            }, (err, result) => {
+                if (err) {
+                console.log(err);
+                res.status(500).json({ 'message': 'Error in changing password.' });
+                } else {
+                res.status(200).json({ 'message': 'password changed' });
+                }
+            }
+        );
+    }
+
+    getAgencyWorkers(req:express.Request, res:express.Response){
+        let agencyUsername = req.body.agencyUsername;
+
+        Worker.find({'agencyUsername':agencyUsername}, (err, workers)=>{
+            if (err) console.log(err)
+            else res.json(workers)
+        });
     }
 }
 

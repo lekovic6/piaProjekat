@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlaceService } from '../services/place.service';
 import { Place } from '../models/place';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-place-details',
@@ -10,7 +11,7 @@ import { Place } from '../models/place';
 })
 export class PlaceDetailsComponent implements OnInit{
   
-  constructor(private route: ActivatedRoute, private placeService:PlaceService) { }
+  constructor(private route: ActivatedRoute, private placeService:PlaceService, private router:Router, private loginService:LoginService) { }
 
   idPlace:string;
   ownerUsername:string;
@@ -47,7 +48,10 @@ export class PlaceDetailsComponent implements OnInit{
 
   deletePlace(){
     this.placeService.deletePlace(this.idPlace).subscribe(res=>{
-      if(res['message'] == 'place deleted') alert('Place deleted successfully!');
+      if(res['message'] == 'place deleted') {
+        alert('Place deleted successfully!');
+        this.router.navigate(['clientPlaces', this.loginService.getUser().username]);
+      }
       else alert('error in delete!'); 
     })
   }

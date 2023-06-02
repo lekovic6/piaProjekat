@@ -14,6 +14,7 @@ export class User{
     agencyAdress:string;
     tid:string;
     description:string;
+    maxNumberOfWorkers:number;
 
     // for client and agency
     profilePicture:{

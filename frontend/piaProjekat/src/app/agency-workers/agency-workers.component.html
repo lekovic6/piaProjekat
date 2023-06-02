@@ -1,0 +1,14 @@
+<div class="workers-container">
+    <h2>Workers ({{ workers.length }}/{{maxNumberOfWorkers}})</h2>
+    <div class="worker-card" *ngFor="let worker of workers" (click)="toggleWorkerDetails(worker)">
+        <div>
+            <span>{{worker.firstName}} {{worker.lastName}}</span>
+            <div *ngIf="worker.isExpanded">
+                <p>Email: {{worker.email}}</p>
+                <p>Phone Number: {{worker.phoneNumber}}</p>
+                <p>Specialization: {{worker.specialization}}</p>
+                <p>Job ID: {{worker.idJob}}</p>
+            </div>
+        </div>
+    </div>
+</div>

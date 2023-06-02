@@ -52,6 +52,13 @@ export class LoginService {
     return JSON.parse(userString);
   }
 
-  
+  changePassword(username, newPassword){
+    const data = {
+      username:username,
+      newPassword:newPassword
+    };
+
+    return this.http.post(this.uri + '/user/changePassword', data);
+  }
 
 }

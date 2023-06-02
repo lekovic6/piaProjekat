@@ -9,7 +9,8 @@ export class Agency{
     agencyAdress:string;
     tid:string;
     description:string;
-
+    maxNumberOfWorkers:number;
+    
     // for client and agency
     profilePicture:{
         data: string;
@@ -18,4 +19,4 @@ export class Agency{
     verifiedByAdmin:boolean;
     declined:boolean;
 }
-    
+

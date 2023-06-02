@@ -19,6 +19,9 @@ import { ClientProfileComponent } from './client-profile/client-profile.componen
 import { ClientPlacesComponent } from './client-places/client-places.component';
 import { PlaceDetailsComponent } from './place-details/place-details.component';
 import { AddPlaceComponent } from './add-place/add-place.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AgencyProfileComponent } from './agency-profile/agency-profile.component';
+import { AgencyWorkersComponent } from './agency-workers/agency-workers.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { AddPlaceComponent } from './add-place/add-place.component';
     ClientProfileComponent,
     ClientPlacesComponent,
     PlaceDetailsComponent,
-    AddPlaceComponent
+    AddPlaceComponent,
+    ChangePasswordComponent,
+    AgencyProfileComponent,
+    AgencyWorkersComponent
   ],
   imports: [
     BrowserModule,

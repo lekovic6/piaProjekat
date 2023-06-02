@@ -10,6 +10,9 @@ import { ClientProfileComponent } from './client-profile/client-profile.componen
 import { ClientPlacesComponent } from './client-places/client-places.component';
 import { AddPlaceComponent } from './add-place/add-place.component';
 import { PlaceDetailsComponent } from './place-details/place-details.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AgencyProfileComponent } from './agency-profile/agency-profile.component';
+import { AgencyWorkersComponent } from './agency-workers/agency-workers.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -20,7 +23,11 @@ const routes: Routes = [
   {path: 'clientPlaces/:clientUsername', component:ClientPlacesComponent},
   {path: 'addPlace', component:AddPlaceComponent},
   {path: 'placeDetails/:idPlace', component:PlaceDetailsComponent},
-  
+  {path: 'changePassword', component:ChangePasswordComponent},
+
+  {path: 'agencyProfile/:username', component:AgencyProfileComponent},
+  {path: 'agencyWorkers', component:AgencyWorkersComponent},
+
   {path: 'agency', component:AgencyComponent},// ovo cu da prebacim u pocentu agencije sto ce da budu jobs ja msm
   
   {path: 'agencyDetails/:username', component: AgencyDetailsComponent} // ovo bi trebao da bude kao agencyHome al ne znam ni sta je njima home zapravo 

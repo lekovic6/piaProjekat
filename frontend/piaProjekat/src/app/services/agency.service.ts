@@ -24,6 +24,26 @@ export class AgencyService {
     return this.http.post(this.uri + '/user/getAgencyByUsername', data);
   }
 
-  
+  updateAgency(username, agencyName, agencyAdress, tid, description, profilePictureData, profilePictureContentType){
+    const data = {
+      username:username,
+      agencyName:agencyName,
+      agencyAdress:agencyAdress,
+      tid:tid,
+      description:description,
+      profilePictureData:profilePictureData,
+      profilePictureContentType:profilePictureContentType
+    }
+
+    return this.http.post(this.uri + '/user/updateAgency', data);
+  }
+
+  getAgencyWorkers(agencyUsername){
+    const data = {
+      agencyUsername:agencyUsername
+    }
+
+    return this.http.post(this.uri + '/user/getAgencyWorkers', data);
+  }
   
 }

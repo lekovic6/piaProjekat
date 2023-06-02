@@ -108,7 +108,7 @@ export class RegistrationComponent implements OnInit {
       userType: ['', Validators.required],
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z][A-Za-z0-9@$!%*?&]{6,11}$/)]],
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z][A-Za-z\\d@$!%*#?&]{6,11}$') ]],
       confirmPassword: ['', Validators.required],
       profilePicture: [null],
 
