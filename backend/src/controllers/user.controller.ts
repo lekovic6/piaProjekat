@@ -1,6 +1,7 @@
 import * as express from 'express'
 import User from '../models/user';
 import Worker from '../models/worker';
+import workerRequest from '../models/workerRequest';
 
 export class UserController {
 
@@ -177,7 +178,32 @@ export class UserController {
             res.status(400).json({'message': 'error in adding worker'});
             console.log(err);
         });
+    }
 
+    alreadyRequestedExpansion(req:express.Request, res:express.Response){
+        let agencyUsername = req.body.agencyUsername;
+        workerRequest.findOne({'agencyUsername' : agencyUsername}, (err, request)=>{
+            if (err) console.log(err)
+            else res.json(request)
+        })
+    }
+
+    makeRequestForWorker(req:express.Request, res:express.Response){
+        let agencyUsername = req.body.agencyUsername;
+        let numberOfWorkers = req.body.numberOfWorkers;
+
+        let newRequest = new workerRequest({
+            agencyUsername:agencyUsername,
+            numberOfWorkers:numberOfWorkers
+        })
+
+        newRequest.save().then(request=>{
+            res.status(200).json({'message':'request made'})
+        }).catch(err =>{
+            res.status(400).json({'message': 'error in making a request'});
+            console.log(err);
+        })
+        
     }
 
 }

@@ -18,17 +18,12 @@ export class AgencyDetailsComponent implements OnInit{
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.agencyUsername = params['username'];
-      // Fetch agency details using the agencyId
-      // Assign the fetched agency details to the 'agency' property
-
-      
 
       //this.agency = await firstValueFrom(this.agencyService.getAgencyByUsername(this.agencyUsername));
-      this.agencyService.getAgencyByUsername(this.agencyUsername).subscribe((resp:Agency) =>{
-        this.agency = resp;
-        console.log('Retrieved agency:', this.agency);
+      this.agencyService.getAgencyByUsername(this.agencyUsername).subscribe((agency:Agency) =>{
+        this.agency = agency;
+        //console.log('Retrieved agency:', this.agency);
       })
-      
     });
 
     

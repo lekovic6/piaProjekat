@@ -23,6 +23,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { AgencyProfileComponent } from './agency-profile/agency-profile.component';
 import { AgencyWorkersComponent } from './agency-workers/agency-workers.component';
 import { AddWorkerModalComponent } from './add-worker-modal/add-worker-modal.component';
+import { AddPlaceCanvasComponent } from './add-place-canvas/add-place-canvas.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { AddWorkerModalComponent } from './add-worker-modal/add-worker-modal.com
     ChangePasswordComponent,
     AgencyProfileComponent,
     AgencyWorkersComponent,
-    AddWorkerModalComponent
+    AddWorkerModalComponent,
+    AddPlaceCanvasComponent
   ],
   imports: [
     BrowserModule,

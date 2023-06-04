@@ -1,0 +1,1 @@
+{"version":3,"file":"workerRequest.js","sourceRoot":"","sources":["../../src/models/workerRequest.ts"],"names":[],"mappings":";;;;;AAAA,wDAAgC;AAEhC,MAAM,MAAM,GAAG,kBAAQ,CAAC,MAAM,CAAA;AAG9B,MAAM,mBAAmB,GAAG,IAAI,MAAM,CAAC;IACnC,cAAc,EAAC,MAAM;IACrB,eAAe,EAAC,MAAM;CACzB,CAAC,CAAA;AAEF,kBAAe,kBAAQ,CAAC,KAAK,CAAC,eAAe,EAAE,mBAAmB,EAAE,gBAAgB,CAAC,CAAC"}

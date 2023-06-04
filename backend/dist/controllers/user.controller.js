@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const user_1 = __importDefault(require("../models/user"));
 const worker_1 = __importDefault(require("../models/worker"));
+const workerRequest_1 = __importDefault(require("../models/workerRequest"));
 class UserController {
     getAllAgencies(req, res) {
         user_1.default.find({ 'role': 'agency' }, (err, agencies) => {
@@ -167,6 +168,30 @@ class UserController {
             console.log(worker);
         }).catch(err => {
             res.status(400).json({ 'message': 'error in adding worker' });
+            console.log(err);
+        });
+    }
+    alreadyRequestedExpansion(req, res) {
+        let agencyUsername = req.body.agencyUsername;
+        workerRequest_1.default.findOne({ 'agencyUsername': agencyUsername }, (err, request) => {
+            if (err)
+                console.log(err);
+            else
+                res.json(request);
+        });
+    }
+    makeRequestForWorker(req, res) {
+        let agencyUsername = req.body.agencyUsername;
+        let numberOfWorkers = req.body.numberOfWorkers;
+        let newRequest = new workerRequest_1.default({
+            agencyUsername: agencyUsername,
+            numberOfWorkers: numberOfWorkers
+        });
+        newRequest.save().then(request => {
+            res.status(200).json({ 'message': 'request made' });
+        }).catch(err => {
+            res.status(400).json({ 'message': 'error in making a request' });
+            console.log(err);
         });
     }
 }

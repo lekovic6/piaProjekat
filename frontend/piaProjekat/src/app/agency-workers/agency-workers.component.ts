@@ -4,6 +4,7 @@ import { AgencyService } from '../services/agency.service';
 import { LoginService } from '../services/login.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddWorkerModalComponent } from '../add-worker-modal/add-worker-modal.component';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-agency-workers',
@@ -14,6 +15,7 @@ export class AgencyWorkersComponent implements OnInit{
   
   constructor(private agencyService:AgencyService, private loginService:LoginService, private modalService: NgbModal){ }
   
+  defaultNumberForRequest = 5;
   workers:Worker[] = [];
   maxNumberOfWorkers:number;
   agencyUsername:string;
@@ -48,7 +50,6 @@ export class AgencyWorkersComponent implements OnInit{
       if(res['message'] = 'update made') alert('Changes saved!')
       else alert('Saving changes failed!');
     });
-
     worker.isEditing = false;
   }
 
@@ -81,9 +82,22 @@ export class AgencyWorkersComponent implements OnInit{
     });
   }
 
-  requestExpansion() {
+  async requestExpansion() {
     // Implement the function to request an expansion of the maximum number of workers.
     // If you're working with an API, this would probably involve making a POST request.
-    // trea da napravim i tabelu WorkerRequests
+
+    let alreadyRequested = await firstValueFrom(this.agencyService.alreadyRequestedExpansion(this.agencyUsername));
+
+    if (alreadyRequested !== null) {
+      alert("You already made a request!")
+    }
+    else{
+      this.agencyService.makeRequestForWorker(this.agencyUsername, this.defaultNumberForRequest).subscribe(res => {
+        if (res['message'] == 'request made') alert("Request made!");
+        else alert("Error in making of a request!")
+      })
+    }
   }
+
+  
 }

@@ -1,0 +1,12 @@
+<div #container></div>
+
+<div class="form-group">
+  <label for="roomWidth">Room Width:</label>
+  <input id="roomWidth" type="number" min="1" max="800" [(ngModel)]="roomWidth">
+
+  <label for="roomHeight">Room Height:</label>
+  <input id="roomHeight" type="number" min="1" max="600" [(ngModel)]="roomHeight">
+
+  <button type ="button" (click)="createRoom()">Create Room</button>
+  <button type="button" (click)="clearRooms()">Clear Rooms</button>
+</div>

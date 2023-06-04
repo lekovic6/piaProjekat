@@ -1,9 +1,24 @@
-<p>agency-details works!</p>
+<div class="container">
+    <div class="card agency-card mt-5">
+        <div class="agency-image">
+            <img [src]="'data:' + agency.profilePicture?.contentType + ';base64, ' + agency.profilePicture?.data" class="card-img-top agency-image" alt="Profile Picture">
+        </div>
 
-<div *ngIf="agency">
-    NAME : {{agencyUsername}} <br>
-    email : {{agency.email}}<br>
-    agencyAdress :{{agency.agencyAdress}}<br>
-    tid : {{agency.tid}}<br>
-    description : {{agency.description}}<br>
+        <div class="card-body">
+            <h5 class="card-title">{{agency.agencyName}}</h5>
+            <p class="card-text">{{agency.description}}</p>
+        </div>
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" autofocus>Username: {{agency.username}}</li>
+            <li class="list-group-item">Email: {{agency.email}}</li>
+            <li class="list-group-item">Address: {{agency.agencyAdress}}</li>
+            <li class="list-group-item">TID: {{agency.tid}}</li>
+        </ul>
+    </div>
+
+    <!-- Placeholder for comments section -->
+    <div class="comments-section mt-5">
+        <!-- Comments will go here -->
+    </div>
 </div>

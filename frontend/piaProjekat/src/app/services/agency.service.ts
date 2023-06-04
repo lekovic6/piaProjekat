@@ -71,4 +71,21 @@ export class AgencyService {
     return this.http.post(this.uri + '/user/addWorker', data);
   }
   
+  alreadyRequestedExpansion(agencyUsername){
+    const data ={
+      agencyUsername:agencyUsername
+    }
+    return this.http.post(this.uri + '/user/alreadyRequestedExpansion', data); 
+  }
+
+  makeRequestForWorker(agencyUsername, numberOfWorkers){
+    const data ={
+      agencyUsername:agencyUsername,
+      numberOfWorkers:numberOfWorkers
+    }
+    return this.http.post(this.uri + '/user/makeRequestForWorker', data); 
+  }
+
+  
+
 }

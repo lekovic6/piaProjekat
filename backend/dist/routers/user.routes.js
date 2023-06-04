@@ -16,5 +16,7 @@ userRouter.route('/getAgencyWorkers').post((req, res) => new user_controller_1.U
 userRouter.route('/saveWorkerChanges').post((req, res) => new user_controller_1.UserController().saveWorkerChanges(req, res));
 userRouter.route('/deleteWorker').post((req, res) => new user_controller_1.UserController().deleteWorker(req, res));
 userRouter.route('/addWorker').post((req, res) => new user_controller_1.UserController().addWorker(req, res));
+userRouter.route('/alreadyRequestedExpansion').post((req, res) => new user_controller_1.UserController().alreadyRequestedExpansion(req, res));
+userRouter.route('/makeRequestForWorker').post((req, res) => new user_controller_1.UserController().makeRequestForWorker(req, res));
 exports.default = userRouter;
 //# sourceMappingURL=user.routes.js.map

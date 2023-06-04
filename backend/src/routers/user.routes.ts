@@ -44,6 +44,15 @@ userRouter.route('/addWorker').post(
     (req, res) => new UserController().addWorker(req, res)
 )
 
+userRouter.route('/alreadyRequestedExpansion').post(
+    (req, res) => new UserController().alreadyRequestedExpansion(req, res)
+)
+
+userRouter.route('/makeRequestForWorker').post(
+    (req, res) => new UserController().makeRequestForWorker(req, res)
+)
+
+
 
 
 export default userRouter;

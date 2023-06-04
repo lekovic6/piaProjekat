@@ -20,13 +20,13 @@
             <label for="area">Area (in sqm):</label>
             <input id="area" type="number" min="1" name="area" [(ngModel)]="area" required/>
         </div>
-
-
+        
         <div>
-            OVDE TREBA CANVAS DA CRTAM + DA UBACUJEM .TXT FAJL?
+            <div>
+                <app-add-place-canvas [numberOfRooms]="numberOfRooms"></app-add-place-canvas>
+            </div>
         </div>
 
-        
         <button type="submit" class="submit-btn">Add Place</button>
     </form>
 </div>
