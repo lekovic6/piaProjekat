@@ -23,7 +23,6 @@ export class AgencyProfileComponent implements OnInit{
   tid:string;
   description:string;
   profilePicture:ProfilePicture;
-  //workers:Worker[];
   maxNumberOfWorkers:number;
 
   ngOnInit(): void {

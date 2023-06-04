@@ -115,6 +115,60 @@ class UserController {
                 res.json(workers);
         });
     }
+    saveWorkerChanges(req, res) {
+        let worker = req.body.worker;
+        //let idWorker = req.body.worker._id; // this should be enough // nope dont thinks so
+        let ObjectId = require('mongodb').ObjectId;
+        let idWorker = new ObjectId(req.body.worker._id);
+        worker_1.default.collection.updateOne({ '_id': idWorker }, {
+            $set: {
+                'firstname': worker.firstname,
+                'lastname': worker.lastname,
+                'phoneNumber': worker.phoneNumber,
+                'email': worker.email,
+                'specialization': worker.specialization
+            }
+        }, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ 'message': 'Error updating client.' });
+            }
+            else {
+                res.status(200).json({ 'message': 'update made' });
+                console.log(result);
+            }
+        });
+    }
+    deleteWorker(req, res) {
+        let ObjectId = require('mongodb').ObjectId;
+        let idWorker = new ObjectId(req.body.worker._id);
+        worker_1.default.collection.deleteOne({ '_id': idWorker }, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ message: 'An error occurred while trying to delete the place.' });
+            }
+            else {
+                console.log(result);
+                res.json({ message: 'delete made' });
+            }
+        });
+    }
+    addWorker(req, res) {
+        let newWorker = new worker_1.default({
+            agencyUsername: req.body.worker.agencyUsername,
+            firstname: req.body.worker.firstname,
+            lastname: req.body.worker.lastname,
+            phoneNumber: req.body.worker.phoneNumber,
+            email: req.body.worker.email,
+            specialization: req.body.worker.specialization,
+        });
+        newWorker.save().then(worker => {
+            res.status(200).json({ 'message': 'worker added' });
+            console.log(worker);
+        }).catch(err => {
+            res.status(400).json({ 'message': 'error in adding worker' });
+        });
+    }
 }
 exports.UserController = UserController;
 //# sourceMappingURL=user.controller.js.map

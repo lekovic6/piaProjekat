@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Worker } from '../models/worker';
 import { AgencyService } from '../services/agency.service';
 import { LoginService } from '../services/login.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddWorkerModalComponent } from '../add-worker-modal/add-worker-modal.component';
 
 @Component({
   selector: 'app-agency-workers',
@@ -10,9 +12,9 @@ import { LoginService } from '../services/login.service';
 })
 export class AgencyWorkersComponent implements OnInit{
   
-  constructor(private agencyService:AgencyService, private loginService:LoginService){ }
+  constructor(private agencyService:AgencyService, private loginService:LoginService, private modalService: NgbModal){ }
   
-  workers:Worker[];
+  workers:Worker[] = [];
   maxNumberOfWorkers:number;
   agencyUsername:string;
   ngOnInit(): void {
@@ -20,15 +22,68 @@ export class AgencyWorkersComponent implements OnInit{
     this.agencyUsername = this.loginService.getUser().username;
     this.agencyService.getAgencyWorkers(this.agencyUsername).subscribe((workers:Worker[])=>{
       this.workers = workers;
-      this.workers.forEach(worker => worker.isExpanded = false);
-
+      this.workers.forEach(worker => {
+        worker.isExpanded = false;
+        worker.isEditing = false;
+      });
       // to do
     });
   }
 
-
   toggleWorkerDetails(worker: Worker) {  // Add this method
     worker.isExpanded = !worker.isExpanded;
   }
+  
+  enableEditing(worker: Worker) {
+    worker.isEditing = true;
+  }
 
+  cancelEditing(worker: Worker) {
+    worker.isEditing = false;
+    // TODO: revert changes if necessary
+  }
+  
+  saveChanges(worker: Worker) {
+    this.agencyService.saveWorkerChanges(worker).subscribe(res =>{
+      if(res['message'] = 'update made') alert('Changes saved!')
+      else alert('Saving changes failed!');
+    });
+
+    worker.isEditing = false;
+  }
+
+  
+  deleteWorker(worker: Worker) {
+    this.agencyService.deleteWorker(worker).subscribe(res=>{
+      if (res['message'] == 'delete made') {
+        alert('Worker deleted!');
+        window.location.reload();
+      }
+      else alert('Delete failed!');
+    })    
+  }
+
+  addWorker() {
+    if (this.workers.length == this.maxNumberOfWorkers){
+      alert('You can only add '+this.maxNumberOfWorkers+' workers.');
+      return;
+    }
+    const modalRef = this.modalService.open(AddWorkerModalComponent);
+    modalRef.result.then((worker) => {
+      if (worker) {
+        worker.agencyUsername = this.loginService.getUser().username;
+
+        this.agencyService.addWorker(worker).subscribe(res =>{
+          if(res['message'] == 'worker added') window.location.reload();
+          else alert('Adding a worker failed!');
+        })
+      }
+    });
+  }
+
+  requestExpansion() {
+    // Implement the function to request an expansion of the maximum number of workers.
+    // If you're working with an API, this would probably involve making a POST request.
+    // trea da napravim i tabelu WorkerRequests
+  }
 }

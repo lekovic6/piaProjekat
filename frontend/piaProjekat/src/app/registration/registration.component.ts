@@ -177,7 +177,7 @@ export class RegistrationComponent implements OnInit {
     let agencyAdress = this.registrationForm.get('agencyAdress').value;
     let tid = this.registrationForm.get('tid').value;
     let description = this.registrationForm.get('description').value;
-
+    let maxNumberOfWorkers = 0;
 
     const responseUsername = await firstValueFrom(this.registrationService.uniqueUsername(username));
     if (responseUsername != null){
@@ -202,7 +202,8 @@ export class RegistrationComponent implements OnInit {
       });
     }
     else { // role === 'agency'
-      this.registrationService.registerAgency(username, password, email, role, agencyName, agencyAdress, tid, description,this.base64Data, this.base64ContentType).subscribe(resp => {
+      this.registrationService.registerAgency(username, password, email, role, agencyName, agencyAdress, tid, description,this.base64Data,
+        this.base64ContentType, maxNumberOfWorkers).subscribe(resp => {
         if (resp['message'] == "user added") {
           alert("Registration succesful!");
         }

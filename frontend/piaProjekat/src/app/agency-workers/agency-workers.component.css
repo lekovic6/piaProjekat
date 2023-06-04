@@ -17,7 +17,6 @@
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    cursor: pointer;
     transition: all 0.3s ease;
 }
 
@@ -37,3 +36,47 @@
 .worker-card p {
     margin: 5px 0;
 }
+
+.worker-card input {
+    display: block;
+    margin: 10px 0;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    cursor: pointer;
+    margin: 10px;
+    padding: 5px;
+    border: none;
+    color: white;
+}
+
+.edit-button, .save-button {
+    background-color: #4CAF50; /* Green */
+}
+
+.delete-button {
+    background-color: #f44336; /* Red */
+}
+
+.add-button {
+    background-color: #008CBA; /* Blue */
+}
+
+.expand-button {
+    background-color: #e7e7e7; /* Gray */
+}
+
+.close-button {
+    background-color: #f44336; /* Red */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }

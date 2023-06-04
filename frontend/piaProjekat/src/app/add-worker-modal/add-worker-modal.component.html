@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h4 class="modal-title">Add Worker</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstname" [(ngModel)]="worker.firstname">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastname" [(ngModel)]="worker.lastname">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="worker.email">
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="worker.phoneNumber">
+        </div>
+        <div class="form-group">
+            <label for="specialization">Specialization</label>
+            <input type="text" class="form-control" id="specialization" name="specialization" [(ngModel)]="worker.specialization">
+        </div>
+
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cancel click')">Cancel</button>
+    <button type="button" class="btn btn-outline-primary" (click)="saveWorker()">Save</button>
+</div>
+  

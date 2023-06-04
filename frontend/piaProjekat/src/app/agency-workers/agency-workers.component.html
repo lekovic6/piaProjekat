@@ -1,14 +1,35 @@
 <div class="workers-container">
     <h2>Workers ({{ workers.length }}/{{maxNumberOfWorkers}})</h2>
+    <div *ngIf="workers?.length == 0">
+        No added workers
+    </div>
     <div class="worker-card" *ngFor="let worker of workers" (click)="toggleWorkerDetails(worker)">
         <div>
-            <span>{{worker.firstName}} {{worker.lastName}}</span>
+            <span>{{worker.firstname}} {{worker.lastname}}</span>
             <div *ngIf="worker.isExpanded">
-                <p>Email: {{worker.email}}</p>
-                <p>Phone Number: {{worker.phoneNumber}}</p>
-                <p>Specialization: {{worker.specialization}}</p>
-                <p>Job ID: {{worker.idJob}}</p>
+                <div *ngIf="!worker.isEditing">
+                    <p>Email: {{worker.email}}</p>
+                    <p>Phone Number: {{worker.phoneNumber}}</p>
+                    <p>Specialization: {{worker.specialization}}</p>
+                    <p *ngIf="worker.idJob != '' && worker.idJob != null">Job ID: {{worker.idJob}}</p>
+                    <p *ngIf="worker.idJob == '' || worker.idJob == null">Job ID: not asigned to a job</p>
+                    <button class="edit-button" (click)="enableEditing(worker); $event.stopPropagation()">Make Changes</button>
+                    <button class="delete-button" (click)="deleteWorker(worker); $event.stopPropagation()">Delete</button>
+                </div>
+                <div *ngIf="worker.isEditing">
+                    Firstname: <input type="text" [(ngModel)]="worker.firstname" (click)="$event.stopPropagation()">
+                    Lastname: <input type="text" [(ngModel)]="worker.lastname" (click)="$event.stopPropagation()">
+                    Email: <input type="text" [(ngModel)]="worker.email" (click)="$event.stopPropagation()">
+                    Phone Number: <input type="text" [(ngModel)]="worker.phoneNumber" (click)="$event.stopPropagation()">
+                    Specialization: <input type="text" [(ngModel)]="worker.specialization" (click)="$event.stopPropagation()">
+                    <button class="save-button" (click)="saveChanges(worker); $event.stopPropagation()">Save Changes</button>
+                    <button class="close-button" (click)="cancelEditing(worker); $event.stopPropagation()">X</button>
+
+                </div>
             </div>
         </div>
     </div>
+
+    <button class="add-button" (click)="addWorker()">Add Worker</button>
+    <button class="expand-button" (click)="requestExpansion()">Request Expansion</button>
 </div>

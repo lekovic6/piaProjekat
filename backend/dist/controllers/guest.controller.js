@@ -38,6 +38,7 @@ class GuestController {
             agencyAdress: req.body.agencyAdress,
             tid: req.body.tid,
             description: req.body.description,
+            maxNumberOfWorkers: req.body.maxNumberOfWorkers,
             profilePicture: {
                 data: req.body.base64Data,
                 contentType: req.body.base64ContentType

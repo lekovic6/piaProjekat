@@ -7,8 +7,8 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
 const WorkerSchema = new Schema({
     agencyUsername: String,
-    firstName: String,
-    lastName: String,
+    firstname: String,
+    lastname: String,
     phoneNumber: String,
     email: String,
     specialization: String,

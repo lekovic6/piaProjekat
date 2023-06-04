@@ -32,5 +32,18 @@ userRouter.route('/getAgencyWorkers').post(
     (req, res) => new UserController().getAgencyWorkers(req, res)
 )
 
+userRouter.route('/saveWorkerChanges').post(
+    (req, res) => new UserController().saveWorkerChanges(req, res)
+)
+
+userRouter.route('/deleteWorker').post(
+    (req, res) => new UserController().deleteWorker(req, res)
+)
+
+userRouter.route('/addWorker').post(
+    (req, res) => new UserController().addWorker(req, res)
+)
+
+
 
 export default userRouter;

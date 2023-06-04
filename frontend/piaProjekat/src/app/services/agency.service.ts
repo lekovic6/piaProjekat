@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Worker } from '../models/worker';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,30 @@ export class AgencyService {
     }
 
     return this.http.post(this.uri + '/user/getAgencyWorkers', data);
+  }
+
+  saveWorkerChanges(worker: Worker){
+    const data = {
+      worker:worker
+    }
+
+    return this.http.post(this.uri + '/user/saveWorkerChanges', data);
+  }
+
+  deleteWorker(worker: Worker){
+    const data = {
+      worker:worker
+    }
+
+    return this.http.post(this.uri + '/user/deleteWorker', data);
+  }
+
+  addWorker(worker: Worker){
+    const data = {
+      worker:worker
+    }
+
+    return this.http.post(this.uri + '/user/addWorker', data);
   }
   
 }

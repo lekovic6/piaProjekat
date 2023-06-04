@@ -44,7 +44,7 @@ export class RegistrationService {
     return this.http.post(this.uri + '/guest/registerClient', data);  
   }
 
-  registerAgency(username, password, email, role, agencyName, agencyAdress, tid, description, base64Data, base64ContentType){
+  registerAgency(username, password, email, role, agencyName, agencyAdress, tid, description, base64Data, base64ContentType, maxNumberOfWorkers){
     const data = {
       username:username,
       password:password,
@@ -57,7 +57,9 @@ export class RegistrationService {
       description:description,
 
       base64Data:base64Data,
-      base64ContentType:base64ContentType
+      base64ContentType:base64ContentType,
+
+      maxNumberOfWorkers:maxNumberOfWorkers
     }
     
     return this.http.post(this.uri + '/guest/registerAgency', data);  
